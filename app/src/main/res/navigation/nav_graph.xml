@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/listaNotasFragment">
+
+    <fragment
+        android:id="@+id/listaNotasFragment"
+        android:name="com.rafahuerta.keepnotes.ListaNotasFragment"
+        android:label="Mis Notas" />
+
+    <fragment
+        android:id="@+id/editarNotaFragment"
+        android:name="com.rafahuerta.keepnotes.EditarNotaFragment"
+        android:label="Editar Nota" />
+
+</navigation>
