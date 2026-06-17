@@ -8,7 +8,8 @@ package com.rafahuerta.keepnotes
 
     class NotaAdapter(
         private var notas: List<Nota>,
-        private val onNotaClick: (Nota) -> Unit
+        private val onNotaClick: (Nota) -> Unit,
+        private val onNotaLongClick: (Nota) -> Unit
     ) : RecyclerView.Adapter<NotaAdapter.NotaViewHolder>() {
 
         inner class NotaViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -29,6 +30,10 @@ package com.rafahuerta.keepnotes
             holder.tvContenido.text = nota.contenido
             holder.tvFecha.text = nota.fecha
             holder.itemView.setOnClickListener { onNotaClick(nota) }
+            holder.itemView.setOnLongClickListener {
+                onNotaLongClick(nota)
+                true
+            }
         }
 
         override fun getItemCount(): Int = notas.size

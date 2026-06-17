@@ -28,14 +28,26 @@ class ListaNotasFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val adapter = NotaAdapter(emptyList()) { nota ->
-            // Al tocar una nota, navegar a EditarNotaFragment enviando la nota
-            val action = ListaNotasFragmentDirections
-                .actionListaNotasFragmentToEditarNotaFragment(
-                    nota.id, nota.titulo, nota.contenido
-                )
-            findNavController().navigate(action)
-        }
+        val adapter = NotaAdapter(
+            notas = emptyList(),
+            onNotaClick = { nota ->
+                val action = ListaNotasFragmentDirections
+                    .actionListaNotasFragmentToEditarNotaFragment(
+                        nota.id, nota.titulo, nota.contenido
+                    )
+                findNavController().navigate(action)
+            },
+            onNotaLongClick = { nota ->
+                androidx.appcompat.app.AlertDialog.Builder(requireContext())
+                    .setTitle("Eliminar nota")
+                    .setMessage("¿Seguro que quieres eliminar esta nota?")
+                    .setPositiveButton("Eliminar") { _, _ ->
+                        viewModel.eliminarNota(nota)
+                    }
+                    .setNegativeButton("Cancelar", null)
+                    .show()
+            }
+        )
 
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerView.adapter = adapter
