@@ -1,8 +1,10 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
+<resources>
     <style name="Base.Theme.KeepNotes" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorPrimary">#00897B</item>
+        <item name="colorOnPrimary">#FFFFFF</item>
+        <item name="colorPrimaryContainer">#E0F4FF</item>
+        <item name="colorSecondary">#00B4A6</item>
+        <item name="android:colorBackground">#F0F8FF</item>
     </style>
 
     <style name="Theme.KeepNotes" parent="Base.Theme.KeepNotes" />
